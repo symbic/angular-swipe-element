@@ -75,7 +75,7 @@
                     });
                 }
                 function onTouchStart(event) {
-                    _onDown(event.touches[0].pageX, event.touches[0].pageY, event, 'touch');
+                    _onDown(event.originalEvent.touches[0].pageX, event.originalEvent.touches[0].pageY, event, 'touch');
                     $element.bind('touchmove', onTouchMove);
                     $element.bind('touchend', onTouchEnd);
                     firstMove = true;
@@ -98,7 +98,7 @@
                         firstMove = false;
                         event.preventDefault();
                     }
-                    _onMove(event.changedTouches[0].pageX, event.changedTouches[0].pageY, event, 'touch');
+                    _onMove(event.originalEvent.changedTouches[0].pageX, event.originalEvent.changedTouches[0].pageY, event, 'touch');
                 }
                 function onMouseMove(event) {
                     _onMove(event.pageX, event.pageY, event, 'mouse');
@@ -114,7 +114,7 @@
                     firstMove = false;
                     $element.unbind('touchmove', onTouchMove);
                     $element.unbind('touchend', onTouchEnd);
-                    _onEnd(event.changedTouches[0].pageX, event.changedTouches[0].pageY, event, 'touch');
+                    _onEnd(event.originalEvent.changedTouches[0].pageX, event.originalEvent.changedTouches[0].pageY, event, 'touch');
                 }
                 function onMouseUp(event) {
                     $document.unbind('mousemove', onMouseMove);
